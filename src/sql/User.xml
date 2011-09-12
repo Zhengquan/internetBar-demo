@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+  <typeAlias alias="user" type="com.wbgl.entity.User"/>
+  <typeAlias alias="admin" type="com.wbgl.entity.Admin"/>
+  <typeAlias alias="cashflow" type="com.wbgl.entity.CashFlow"/>
+
+  <resultMap id="UserObj" class="user">
+    <result property="identityId" column="identityId"/>
+    <result property="password" column="password"/>
+    <result property="isVip" column="isVip"/>
+    <result property="vipCard" column="vipCard"/>
+    <result property="remain" column="remain" javaType="java.lang.Double" jdbcType="NUMBER"/>
+    <result property="logged" column="logged"/>
+    <result property="loggedTime" column="loggedTime"/>
+  </resultMap>
+  
+  <resultMap id="AdminObj" class="admin">
+    <result property="identityId" column="identityId"/>
+    <result property="password" column="password"/>
+  </resultMap>
+  
+  <resultMap id="CashFlowObj" class="cashflow">
+ 	<result property="identityId" column="identityId"/>
+ 	<result property="cashType" column="cashType"/>
+ 	<result property="cash" column="cash"/>
+    <result property="loggedTime" column="loggedTime"/>
+    <result property="logoutTime" column="logoutTime"/>
+  </resultMap>
+  
+  <select id="loginCheck" resultClass="java.lang.Integer">	
+  	SELECT COUNT(0) from $tableName$ where identityId = #identityId# and password = #password#
+  </select>
+  
+  <select id="getTempUser" resultMap="UserObj">
+  	SELECT identityid,PASSWORD,remain,logged,loggedtime,'0' isvip,'' vipcard 
+  	FROM tempuser 
+  	WHERE identityid = #value#
+  </select>
+  
+  <select id="getVipUser" resultMap="UserObj">
+  	SELECT identityid,PASSWORD,remain,logged,loggedtime,'1' isvip, vipcard 
+  	FROM vipuser
+  	WHERE identityid = #value#
+  </select>
+  <select id="getOnlineTempUser" resultMap="UserObj">
+  	SELECT identityid,PASSWORD,remain,logged,loggedtime,'0' isvip,'' vipcard 
+  	FROM tempuser
+  	WHERE logged = '1'
+  </select>
+  <select id="getOnlineVipUser" resultMap="UserObj">
+  	SELECT identityid,PASSWORD,remain,logged,loggedtime,'1' isvip, vipcard 
+  	FROM vipuser
+  	WHERE logged = '1'
+  </select>
+  <select id="getCashFlow" resultMap="CashFlowObj">
+  	SELECT identityid,cashtype,cash,loggedtime,logouttime
+  	FROM cashflow
+  </select>
+  <select id="getAdmin" resultMap="AdminObj">
+  	SELECT identityId,PASSWORD FROM sysadmin WHERE identityid = #identityId#
+  </select>
+  
+  <update id="updateLoginTime">
+  	UPDATE $tableName$ SET logged = '1',loggedtime=to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss') WHERE identityid = #identityId#
+  </update>
+  
+  <update id="updateLogoutStatus">
+  	UPDATE $tableName$ SET logged = '0' WHERE identityid = #identityId#
+  </update>
+  <update id="updatePwd">
+  	UPDATE sysadmin SET password=#newPwd# WHERE identityid = #identityId# and password = #oldPwd#
+  </update>
+  
+  <update id="updateCash">
+  	UPDATE $tableName$ SET remain = remain+ #cash# WHERE identityid = #identityId#
+  </update>
+  <update id="resetVipCash">
+  	UPDATE vipuser SET remain=0.00 WHERE identityid = #identityId#
+  </update>
+  <insert id="insertCashFlow">
+  	insert into cashflow values(sys_guid(),#identityId#,to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'),'','2',#cash#)
+  </insert>
+  <insert id="insertCustomCashFlow">
+  	insert into cashflow values(sys_guid(),#identityId#,'',to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss'),'1',#cash#)
+  </insert>
+  <insert id="insertTempuser">
+  	insert into tempuser values(#identityId#,#pwd#,#cash#,'','')
+  </insert>
+  
+  <insert id="insertVipuser">
+  	insert into vipuser values(#identityId#,#pwd#,#cash#,#vipCard#,'','')
+  </insert>
+  
+  <delete id="deleteTempUser">
+  	delete from tempuser where identityid = #identityId#
+  </delete>
+</sqlMap>

@@ -1,0 +1,8 @@
+CREATE TABLE vipuser(
+       identityId VARCHAR(20) PRIMARY KEY NOT NULL,
+       PASSWORD VARCHAR(10),
+       remain NUMBER(10,2),
+       vipCard VARCHAR(20),
+       logged VARCHAR(1),
+       loggedtime VARCHAR(20)
+);

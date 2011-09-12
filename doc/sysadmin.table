@@ -1,0 +1,4 @@
+CREATE TABLE sysadmin(
+       identityId VARCHAR(20) PRIMARY KEY NOT NULL,
+       PASSWORD VARCHAR(10)
+);

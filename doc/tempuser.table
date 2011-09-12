@@ -1,0 +1,7 @@
+CREATE TABLE tempuser(
+       identityId VARCHAR(20) PRIMARY KEY NOT NULL,
+       PASSWORD VARCHAR(10),
+       remain NUMBER(10,2),
+       logged VARCHAR(1),
+       loggedtime VARCHAR(20)
+);

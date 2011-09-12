@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	 
+	<!--  
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+  		<property name="defaultErrorView">
+   			<value>exception</value>
+  		</property>
+		<property name="exceptionMappings">
+   			<props>
+    			<prop key="java.lang.Exception">exception</prop>
+   			</props> 
+  		</property>
+ 	</bean>
+	
+	<bean id="antiRefreshInterceptor" class="com.wiscom.jwxk.common.AntiRefreshInterceptor"/>
+	
+ 	-->
+	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/jsp/login.htm">loginController</prop>
+				<prop key="/jsp/timeAjax.htm">timeAjaxController</prop>
+				<prop key="/jsp/pwdUpdate.htm">pwdUpdateController</prop>
+				<prop key="/jsp/cashAdd.htm">cashAddController</prop>
+				<prop key="/jsp/addUser.htm">addUserController</prop>
+				<prop key="/jsp/onlineUser.htm">onlineUserController</prop>
+				<prop key="/jsp/listCashFlow.htm">listCashFlowController</prop>
+				<prop key="/jsp/logout.htm">logoutController</prop>
+				<prop key="/jsp/checkout.htm">checkOutController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>action</value>
+		</property>
+	</bean>
+	
+	<bean id="loginController" class="com.wbgl.web.LoginController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	
+	<bean id="pwdUpdateController" class="com.wbgl.web.PwdUpdateController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	
+	<bean id="cashAddController" class="com.wbgl.web.CashAddController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	
+	<bean id="addUserController" class="com.wbgl.web.AddUserController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	
+	<bean id="timeAjaxController" class="com.wbgl.web.TimeAjaxController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	
+	<bean id="onlineUserController" class="com.wbgl.web.OnlineUserController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	<bean id="listCashFlowController" class="com.wbgl.web.ListCashFlowController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	<bean id="logoutController" class="com.wbgl.web.LogoutController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	<bean id="checkOutController" class="com.wbgl.web.CheckOutController">
+		<property name="publicService" ref="publicServiceImpl"/>
+	</bean>
+	<!--  
+	<bean id="classSelectController" class="com.wiscom.jwxk.web.ClassSelectController">
+		<property name="classSelectDao" ref="classSelectDaoImpl"/>
+		<property name="conflictClassDao" ref="conflictClassDaoImpl"/>
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+	</bean>
+	-->
+
+	
+
+	
+</beans>

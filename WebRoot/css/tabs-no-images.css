@@ -1,0 +1,120 @@
+
+/* root element for tabs  */
+div.css-tabs {
+	margin:0 !important; 
+	padding:0;
+	height:29px;
+    background-color:#fff;
+	border-bottom:1px solid #c4e4e4;
+}
+
+div.css-tabs p{
+    white-space:nowrap;
+}
+
+.aclick {
+	float:left;
+	font-size:14px;
+	display:block;
+	padding:5px 30px;	
+	*padding:5px 30px 6px 30px;
+	text-decoration:none;
+	border:1px solid #666;	
+	border-bottom:0px;
+	height:18px;
+	color:#000;
+	margin-right:2px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	top:1px;	
+	font-weight:bold;
+	background:#e5effb;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#fbfbfb, EndColorStr=#efefef); /* IE */
+	background-image: -moz-linear-gradient(top, #fbfbfb, #efefef); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fbfbfb),color-stop(1, #efefef)); /* Saf4+, Chrome */
+}
+
+.anotclick {
+	float:left;
+	font-size:14px;
+	display:block;
+	padding:5px 30px;
+	text-decoration:none;
+	border:1px solid #8db9c1;
+	border-bottom:0px;
+	height:18px;
+	color:#D9592A;
+	margin-right:2px;
+    border-bottom-width:0px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	font-weight:bold;
+	top:1px;
+	background:#e5effb;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#fcfbff, EndColorStr=#c4e4e4); /* IE */
+	background-image: -moz-linear-gradient(top, #fcfbff, #c4e4e4); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fcfbff),color-stop(1, #c4e4e4)); /* Saf4+, Chrome */
+}
+
+.aclick_1 {
+	float:left;
+	font-size:12px;
+	display:block;
+	padding:5px 13px;	
+	text-decoration:none;
+	border:1px solid #666;	
+	border-bottom:0px;
+	height:18px;
+	color:#000;
+	margin-right:2px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	top:1px;	
+	font-weight:bold;
+	background:#e5effb;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#fbfbfb, EndColorStr=#efefef); /* IE */
+	background-image: -moz-linear-gradient(top, #fbfbfb, #efefef); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fbfbfb),color-stop(1, #efefef)); /* Saf4+, Chrome */
+}
+
+.anotclick_1 {
+	float:left;
+	font-size:12px;
+	display:block;
+	padding:5px 13px;
+	text-decoration:none;
+	border:1px solid #8db9c1;
+	border-bottom:0px;
+	height:18px;
+	color:#D9592A;
+	margin-right:2px;
+    border-bottom-width:0px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright:4px;
+	position:relative;
+	font-weight:bold;
+	top:1px;
+	background:#e5effb;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#fcfbff, EndColorStr=#c4e4e4); /* IE */
+	background-image: -moz-linear-gradient(top, #fcfbff, #c4e4e4); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fcfbff),color-stop(1, #c4e4e4)); /* Saf4+, Chrome */
+}
+
+div.css-tabs a:hover {
+	color:#D9592A;
+	background:#e5effb;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#fcfbff, EndColorStr=#c4e4e4); /* IE */
+	background-image: -moz-linear-gradient(top, #fcfbff, #c4e4e4); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fcfbff),color-stop(1, #c4e4e4)); /* Saf4+, Chrome */
+}
+	
+/* selected tab */
+div.css-tabs a.current {
+	background-color:#ddd;
+	border-bottom:2px solid #c4e4e4;
+	color:#000;
+	cursor:default;
+}

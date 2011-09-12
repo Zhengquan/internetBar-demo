@@ -1,0 +1,8 @@
+CREATE TABLE cashflow(
+       ID VARCHAR(40) PRIMARY KEY NOT NULL,
+       identityId VARCHAR(20),
+       loggedTime VARCHAR(20),
+       logoutTime VARCHAR(20),
+       cashType VARCHAR(1),
+       cash NUMBER(10,2)
+);
